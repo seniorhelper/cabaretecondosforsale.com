@@ -82,6 +82,28 @@
 html { scroll-behavior: smooth; }
 body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
 
+/* LANGUAGE BAR */
+.lang-bar {
+  background: var(--navy);
+  padding: 6px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; color: rgba(255,255,255,0.55);
+}
+.lang-toggle {
+  display: inline-flex;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px; overflow: hidden; margin-left: 10px;
+}
+.lang-toggle button {
+  background: transparent; border: none;
+  color: rgba(255,255,255,0.55);
+  padding: 4px 12px; font-size: 11px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer; transition: all 0.2s;
+  font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+}
+.lang-toggle button.active { background: var(--teal); color: var(--white); }
+
 /* UTILITY */
 .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
 .section { padding: 80px 0; }
@@ -111,9 +133,7 @@ nav {
 .nav-cta:hover { background: var(--teal-light); }
 
 /* ============================================================
-   VIDEO HERO — full-screen background video with overlay
-   Uses a free CC0 Pexels drone video hosted via CDN.
-   Swap src to your own .mp4 when available.
+   HERO — full-screen background IMAGE with overlay
    ============================================================ */
 .hero {
   position: relative;
@@ -121,35 +141,31 @@ nav {
   display: flex;
   align-items: center;
   overflow: hidden;
-  /* nav is 86px tall (8px padding top + bottom + 70px logo) */
-  padding-top: 86px;
+  padding-top: 122px;
 }
 
-/* Video layer */
-.hero-video-wrap {
+/* Static image background layer */
+.hero-bg {
   position: absolute;
   inset: 0;
+  background-image: url('https://raw.githubusercontent.com/seniorhelper/cabaretecondosforsale.com/main/images/buy-condo-cabarete-dominican-republic.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  transform: scale(1.04);
+  animation: heroZoom 18s ease-out forwards;
   z-index: 0;
-  overflow: hidden;
 }
-.hero-video-wrap video {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%; min-height: 100%;
-  width: auto; height: auto;
-  object-fit: cover;
-}
-/* Fallback gradient shown while video loads */
-.hero-video-wrap::before {
-  content: '';
+@keyframes heroZoom { to { transform: scale(1.0); } }
+
+/* Fallback gradient shown if image doesn't load */
+.hero-bg-fallback {
   position: absolute;
   inset: 0;
   background: linear-gradient(165deg, #0b1f3a 0%, #163356 40%, #0a4a5e 75%, #0d6b6b 100%);
   z-index: 0;
 }
 
-/* Dark gradient overlay over the video so text is readable */
+/* Dark gradient overlay so text is readable */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -160,28 +176,6 @@ nav {
     rgba(10,79,94,0.55) 100%
   );
   z-index: 1;
-}
-
-/* Decorative radial glows */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -100px; right: -100px;
-  width: 600px; height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(10,143,143,0.18) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 2;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -80px; left: 20%;
-  width: 400px; height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 2;
 }
 
 /* Content grid */
@@ -209,18 +203,13 @@ nav {
 h1.hero-headline {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(36px, 5.5vw, 68px);
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.08;
-  margin-bottom: 22px;
+  font-weight: 700; color: var(--white);
+  line-height: 1.08; margin-bottom: 22px;
 }
 h1.hero-headline em { color: var(--teal-light); font-style: italic; }
 .hero-sub {
-  font-size: 17px;
-  color: rgba(255,255,255,0.78);
-  line-height: 1.8;
-  margin-bottom: 36px;
-  max-width: 500px;
+  font-size: 17px; color: rgba(255,255,255,0.78);
+  line-height: 1.8; margin-bottom: 36px; max-width: 500px;
 }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn-gold { background: var(--gold); color: var(--navy); padding: 15px 32px; border-radius: 50px; font-size: 15px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; transition: all 0.25s; display: inline-block; letter-spacing: 0.3px; }
@@ -228,48 +217,19 @@ h1.hero-headline em { color: var(--teal-light); font-style: italic; }
 .btn-outline { background: transparent; color: rgba(255,255,255,0.85); padding: 15px 32px; border-radius: 50px; font-size: 15px; font-weight: 600; text-decoration: none; border: 2px solid rgba(255,255,255,0.3); cursor: pointer; transition: all 0.25s; display: inline-block; }
 .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: white; }
 
-/* Right side — stats card floats over video */
+/* Right side — stats card */
 .hero-right { position: relative; }
 .hero-stats-card {
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255,255,255,0.16);
-  border-radius: 20px;
-  padding: 32px 28px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  border-radius: 20px; padding: 32px 28px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
 }
 .hero-stat { text-align: center; padding: 16px; background: rgba(255,255,255,0.06); border-radius: 12px; }
 .hero-stat strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 6px; }
 .hero-stat span { font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; line-height: 1.4; display: block; }
-
-/* Video credit / mute toggle */
-.video-ctrl {
-  position: absolute;
-  bottom: 24px; right: 28px;
-  z-index: 4;
-  display: flex; gap: 10px; align-items: center;
-}
-.video-ctrl button {
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-  color: white;
-  padding: 8px 14px;
-  border-radius: 30px;
-  font-size: 12px;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer;
-  transition: all 0.2s;
-  backdrop-filter: blur(8px);
-}
-.video-ctrl button:hover { background: rgba(255,255,255,0.22); }
-.video-credit {
-  font-size: 10px;
-  color: rgba(255,255,255,0.35);
-  letter-spacing: 0.5px;
-}
 
 /* QUICK ANSWER */
 .qa-box {
@@ -666,6 +626,18 @@ footer ul li a:hover { color: var(--gold-light); }
 
 <body>
 
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <span>🇩🇴 Cabarete, Dominican Republic</span>
+  <span style="display:inline-flex;align-items:center;gap:6px;">
+    <span style="color:rgba(255,255,255,0.35);font-size:11px;" data-en="Language:" data-es="Idioma:">Language:</span>
+    <span class="lang-toggle">
+      <button class="active" onclick="setLang('en')" id="btn-en">EN</button>
+      <button onclick="setLang('es')" id="btn-es">ES</button>
+    </span>
+  </span>
+</div>
+
 <!-- NAV -->
 <nav>
   <a href="#top">
@@ -678,18 +650,18 @@ footer ul li a:hover { color: var(--gold-light); }
     <span id="nav-text" style="display:none; color:var(--teal); font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700;">CabareteCondosForSale.com</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#neighborhoods">Neighborhoods</a></li>
-    <li><a href="#listings">Property Types</a></li>
-    <li><a href="#guide">Buyer's Guide</a></li>
-    <li><a href="#investment">Investment</a></li>
-    <li><a href="#resources">Resources</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#neighborhoods" data-en="Neighborhoods" data-es="Vecindarios">Neighborhoods</a></li>
+    <li><a href="#listings" data-en="Property Types" data-es="Tipos de Propiedad">Property Types</a></li>
+    <li><a href="#guide" data-en="Buyer's Guide" data-es="Guía del Comprador">Buyer's Guide</a></li>
+    <li><a href="#investment" data-en="Investment" data-es="Inversión">Investment</a></li>
+    <li><a href="#resources" data-en="Resources" data-es="Recursos">Resources</a></li>
+    <li><a href="#faq" data-en="FAQ" data-es="FAQ">FAQ</a></li>
   </ul>
-  <a href="#advertise" class="nav-cta">List Your Property</a>
+  <a href="#advertise" class="nav-cta" data-en="List Your Property" data-es="Lista tu Propiedad">List Your Property</a>
 </nav>
 
 <!-- BIG CENTERED LOGO HEADER (white background) -->
-<div style="background:#ffffff; padding: 36px 24px 0; text-align:center; border-bottom: 1px solid #e8e0d0; margin-top:86px;">
+<div style="background:#ffffff; padding: 36px 24px 0; text-align:center; border-bottom: 1px solid #e8e0d0; margin-top:122px;">
   <img
     src="https://raw.githubusercontent.com/seniorhelper/cabaretecondosforsale.com/main/images/buy-condo-cabarete-dominican-republic-logo.png"
     alt="Cabarete Condos For Sale — Buy a Condo in Cabarete Dominican Republic"
@@ -699,43 +671,11 @@ footer ul li a:hover { color: var(--gold-light); }
   <p style="font-size:15px; color:var(--text-light); letter-spacing:2px; text-transform:uppercase; font-weight:600; margin-top:14px; padding-bottom:28px;">Dominican Republic North Coast · 2026 Buyer's Guide &amp; Directory</p>
 </div>
 
-<!-- ============================================================
-     HERO — Full-screen video background
-     
-     VIDEO SOURCE NOTES:
-     • This uses a free CC0 Pexels drone video of Caribbean/tropical water.
-       Source: https://www.pexels.com/video/aerial-drone-view-of-cabarete-beach-drone-footage/
-       (Replace the src below with your own .mp4 hosted on GitHub or a CDN.)
-     • The <source> tag with type="video/mp4" is correct for all modern browsers.
-     • poster= shows while the video loads or on mobile where autoplay may be blocked.
-     • On iOS, autoplay only works with muted + playsinline + autoplay attributes together.
-     ============================================================ -->
 <section class="hero" id="top">
 
-  <!-- VIDEO BACKGROUND -->
-  <div class="hero-video-wrap">
-    <!--
-      SWAP THIS SRC with your actual video file URL.
-      Options:
-        1. Host the .mp4 on GitHub (works up to ~25MB): 
-           https://raw.githubusercontent.com/seniorhelper/cabaretecondosforsale.com/main/videos/cabarete-drone.mp4
-        2. Use a Pexels free video download link (must download and re-host — Pexels links expire)
-        3. Use Cloudinary free tier CDN: https://res.cloudinary.com/YOUR_CLOUD/video/upload/YOUR_FILE.mp4
-        
-      Until you have a real video, the fallback gradient (set via ::before pseudo-element) displays.
-    -->
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="metadata"
-      poster="https://raw.githubusercontent.com/seniorhelper/cabaretecondosforsale.com/main/images/buy-condo-cabarete-dominican-republic.jpg"
-    >
-      <source src="https://raw.githubusercontent.com/seniorhelper/cabaretecondosforsale.com/main/videos/cabarete-drone.mp4" type="video/mp4">
-      <!-- Fallback: if no video file exists yet, the CSS gradient background shows -->
-    </video>
-  </div>
+  <!-- STATIC IMAGE BACKGROUND -->
+  <div class="hero-bg"></div>
+  <div class="hero-bg-fallback"></div>
 
   <!-- OVERLAY -->
   <div class="hero-overlay"></div>
@@ -744,18 +684,18 @@ footer ul li a:hover { color: var(--gold-light); }
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-eyebrow">
-        🌊 Caribbean's Kite &amp; Surf Capital
+        🌊 <span data-en="Caribbean's Kite &amp; Surf Capital" data-es="Capital del Kite y Surf del Caribe">Caribbean's Kite &amp; Surf Capital</span>
       </div>
 
       <h1 class="hero-headline fade-up">
-        Cabarete Condos<br>For Sale — <em>Find Yours</em>
+        <span data-en="Cabarete Condos&lt;br&gt;For Sale — &lt;em&gt;Find Yours&lt;/em&gt;" data-es="Condominios en Cabarete&lt;br&gt;en Venta — &lt;em&gt;Encuentra el Tuyo&lt;/em&gt;">Cabarete Condos<br>For Sale — <em>Find Yours</em></span>
       </h1>
-      <p class="hero-sub fade-up delay-1">
+      <p class="hero-sub fade-up delay-1" data-en="Beachfront studios to luxury oceanview penthouses. Turnkey investment properties with 9–12% rental yields. Your slice of the Dominican Republic's most dynamic North Coast town starts here." data-es="Estudios frente al mar hasta penthouses de lujo con vista al océano. Propiedades de inversión llave en mano con rendimientos del 9–12%. Tu lugar en la ciudad más dinámica de la Costa Norte de la República Dominicana empieza aquí.">
         Beachfront studios to luxury oceanview penthouses. Turnkey investment properties with 9–12% rental yields. Your slice of the Dominican Republic's most dynamic North Coast town starts here.
       </p>
       <div class="hero-ctas fade-up delay-2">
-        <a href="#listings" class="btn-gold">🏠 Explore Property Types</a>
-        <a href="#guide" class="btn-outline">📋 Buyer's Guide</a>
+        <a href="#listings" class="btn-gold" data-en="🏠 Explore Property Types" data-es="🏠 Ver Tipos de Propiedad">🏠 Explore Property Types</a>
+        <a href="#guide" class="btn-outline" data-en="📋 Buyer's Guide" data-es="📋 Guía del Comprador">📋 Buyer's Guide</a>
       </div>
     </div>
 
@@ -764,36 +704,30 @@ footer ul li a:hover { color: var(--gold-light); }
       <div class="hero-stats-card fade-up delay-2">
         <div class="hero-stat">
           <strong>$185K</strong>
-          <span>Median Condo Price</span>
+          <span data-en="Median Condo Price" data-es="Precio Mediano de Condo">Median Condo Price</span>
         </div>
         <div class="hero-stat">
           <strong>9–12%</strong>
-          <span>Annual Rental Yield</span>
+          <span data-en="Annual Rental Yield" data-es="Rendimiento Anual de Alquiler">Annual Rental Yield</span>
         </div>
         <div class="hero-stat">
           <strong>20 min</strong>
-          <span>To Airport (POP)</span>
+          <span data-en="To Airport (POP)" data-es="Al Aeropuerto (POP)">To Airport (POP)</span>
         </div>
         <div class="hero-stat">
           <strong>300+</strong>
-          <span>Windy Days/Year</span>
+          <span data-en="Windy Days/Year" data-es="Días de Viento/Año">Windy Days/Year</span>
         </div>
         <div class="hero-stat">
           <strong>$200K</strong>
-          <span>Investor Visa Threshold</span>
+          <span data-en="Investor Visa Threshold" data-es="Umbral de Visa de Inversor">Investor Visa Threshold</span>
         </div>
         <div class="hero-stat">
           <strong>5–10%</strong>
-          <span>Annual Appreciation</span>
+          <span data-en="Annual Appreciation" data-es="Apreciación Anual">Annual Appreciation</span>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- VIDEO CONTROLS (mute toggle + credit) -->
-  <div class="video-ctrl">
-    <button onclick="toggleMute()" id="mute-btn" title="Toggle audio">🔇 Unmute</button>
-    <span class="video-credit">Drone footage — CC0 / replace with your own</span>
   </div>
 
 </section>
@@ -801,8 +735,8 @@ footer ul li a:hover { color: var(--gold-light); }
 <!-- QUICK ANSWER -->
 <div class="container" style="position:relative; z-index:20; margin-top: 60px; margin-bottom: 70px;">
   <div class="qa-box">
-    <h2>🏠 Quick Answer: Cabarete Condos For Sale</h2>
-    <p class="qa-answer speakable">
+    <h2 data-en="🏠 Quick Answer: Cabarete Condos For Sale" data-es="🏠 Respuesta Rápida: Condominios en Cabarete en Venta">🏠 Quick Answer: Cabarete Condos For Sale</h2>
+    <p class="qa-answer speakable" data-en="&lt;strong&gt;Cabarete condos for sale&lt;/strong&gt; in 2026 range from entry-level studios at ~$80,000 to luxury beachfront penthouses at $800,000+, with a median price of &lt;strong&gt;$185,000 USD&lt;/strong&gt;. Foreigners can buy with full fee-simple title — no permits required. Key neighborhoods: &lt;strong&gt;Cabarete Bay&lt;/strong&gt; (walkable beach town), &lt;strong&gt;Kite Beach&lt;/strong&gt; (world-class watersports), &lt;strong&gt;Punta Goleta&lt;/strong&gt; (upscale eastern bay), and &lt;strong&gt;Playa Encuentro&lt;/strong&gt; (surf capital). Rental yields average &lt;strong&gt;9–12%&lt;/strong&gt; annually. Airport: Gregorio Luperón (POP), 20 minutes away." data-es="Los &lt;strong&gt;condominios en venta en Cabarete&lt;/strong&gt; en 2026 van desde estudios básicos a ~$80,000 hasta penthouses de lujo frente al mar a $800,000+, con un precio mediano de &lt;strong&gt;$185,000 USD&lt;/strong&gt;. Los extranjeros pueden comprar con pleno título de propiedad — sin permisos requeridos. Vecindarios clave: &lt;strong&gt;Cabarete Bay&lt;/strong&gt;, &lt;strong&gt;Kite Beach&lt;/strong&gt;, &lt;strong&gt;Punta Goleta&lt;/strong&gt; y &lt;strong&gt;Playa Encuentro&lt;/strong&gt;. Rendimientos de alquiler del &lt;strong&gt;9–12%&lt;/strong&gt; anuales. Aeropuerto: Gregorio Luperón (POP), a 20 minutos.">
       <strong>Cabarete condos for sale</strong> in 2026 range from entry-level studios at ~$80,000 to luxury beachfront penthouses at $800,000+, with a median price of <strong>$185,000 USD</strong>. Foreigners can buy with full fee-simple title — no permits required. Key neighborhoods: <strong>Cabarete Bay</strong> (walkable beach town), <strong>Kite Beach</strong> (world-class watersports), <strong>Punta Goleta</strong> (upscale eastern bay), and <strong>Playa Encuentro</strong> (surf capital). Rental yields average <strong>9–12%</strong> annually. Airport: Gregorio Luperón (POP), 20 minutes away.
     </p>
   </div>
@@ -1115,7 +1049,7 @@ footer ul li a:hover { color: var(--gold-light); }
   <div class="container">
     <div class="label">Tools &amp; Research</div>
     <h2 class="title">The Buyer's <em>Resource Hub</em></h2>
-    <p class="lead">Everything a serious Cabarete buyer needs in one place — from active listing databases and top local agencies to downloadable maps, virtual tours, and market intelligence.</p>
+    <p class="lead">Everything a serious Cabarete buyer needs in one place — from active listing databases and top local agencies to downloadable maps, an interactive neighborhood map, and market intelligence.</p>
 
     <!-- MAP DOWNLOAD BOX -->
     <div class="map-download">
@@ -1136,24 +1070,24 @@ footer ul li a:hover { color: var(--gold-light); }
 
     <!-- VIRTUAL TOUR EMBED -->
     <div style="margin-top: 40px;">
-      <div class="label" style="margin-bottom: 12px;">Virtual Tour</div>
-      <h3 style="font-family:'Cormorant Garamond',serif; font-size: clamp(24px,3.5vw,36px); color: var(--navy); margin-bottom: 14px;">Explore Cabarete <em style="color:var(--teal); font-style:italic;">From Above</em></h3>
-      <p style="font-size:15.5px; line-height:1.8; color:var(--text-mid); margin-bottom:24px; max-width:780px;">Get your bearings before you arrive. The interactive Google Street View embed below lets you virtually walk Cabarete's main beach strip — a powerful research tool when evaluating properties from abroad. Use it to see proximity to the beach, restaurants, and activity centers in any neighborhood you're considering.</p>
+      <div class="label" style="margin-bottom: 12px;">Interactive Map</div>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size: clamp(24px,3.5vw,36px); color: var(--navy); margin-bottom: 14px;">Explore Cabarete <em style="color:var(--teal); font-style:italic;">Before You Arrive</em></h3>
+      <p style="font-size:15.5px; line-height:1.8; color:var(--text-mid); margin-bottom:24px; max-width:780px;">Get your bearings before you visit. The interactive Google Map below covers the full Cabarete beach area — zoom in on Kite Beach, Cabarete Bay, Punta Goleta, and Playa Encuentro, switch to satellite view for an aerial perspective, and see exactly how close specific streets are to the water. A powerful research tool when evaluating properties from abroad.</p>
       <div class="vtour-wrap">
-        <div class="vtour-label">📍 Virtual Tour — Cabarete Beach</div>
-        <!-- Google Street View embed of Cabarete main beach strip -->
+        <div class="vtour-label">📍 Interactive Map — Cabarete Beach</div>
+        <!-- Google Maps embed — Cabarete beach area, satellite view -->
         <iframe
-          src="https://www.google.com/maps/embed?pb=!4v1700000000000!6m8!1m7!1sCAoSLEFGMVFpcFBtdVNfMHhJT01ERnpJbGt2anpLdVpTc3RaSmVLbnpyOFpVcUhM!2m2!1d19.7483!2d-70.4188!3f0!4f0!5f0.7820865974627469"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7563.8!2d-70.4188!3d19.7483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eb1c9b1f2a4e7b5%3A0x123456789!2sCabarete%20Beach%2C+Dominican+Republic!5e1!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
           width="100%"
           height="480"
           style="border:0;"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Virtual tour of Cabarete beach Dominican Republic"
+          title="Cabarete beach area map Dominican Republic"
         ></iframe>
       </div>
-      <p style="font-size:12px; color:var(--text-light); margin-top:10px; text-align:center;">Interactive Google Street View — Cabarete, Puerto Plata, Dominican Republic (19.7483°N, 70.4188°W)</p>
+      <p style="font-size:12px; color:var(--text-light); margin-top:10px; text-align:center;">Interactive Google Maps — Cabarete Beach, Puerto Plata, Dominican Republic · Toggle satellite view for aerial detail</p>
     </div>
 
     <!-- RESOURCE CARDS GRID -->
@@ -1352,54 +1286,14 @@ footer ul li a:hover { color: var(--gold-light); }
 <section class="section" id="faq">
   <div class="container">
     <div style="text-align:center;">
-      <div class="label" style="justify-content:center; display:block;">Frequently Asked Questions</div>
-      <h2 class="title" style="max-width:700px; margin:0 auto 8px;">Everything You Need to Know About <em>Buying in Cabarete</em></h2>
+      <div class="label" style="justify-content:center; display:block;" data-en="Frequently Asked Questions" data-es="Preguntas Frecuentes">Frequently Asked Questions</div>
+      <h2 class="title" style="max-width:700px; margin:0 auto 8px;" data-en="Everything You Need to Know About &lt;em&gt;Buying in Cabarete&lt;/em&gt;" data-es="Todo lo que Necesitas Saber Sobre &lt;em&gt;Comprar en Cabarete&lt;/em&gt;">Everything You Need to Know About <em>Buying in Cabarete</em></h2>
     </div>
-    <div class="faq-wrap">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Can foreigners buy condos in Cabarete, Dominican Republic? <span class="faq-arrow">▾</span></div>
-        <div class="faq-a">Yes. The Dominican Republic grants foreigners the same property ownership rights as Dominican nationals — enshrined in the constitution. You can purchase condos, villas, or land in your own name with full fee-simple title (Certificado de Título). No special permits, local partners, or government approval required. The process typically takes 30 to 60 days from offer to title registration. It's one of the most accessible foreign ownership frameworks in the entire Caribbean.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What is the average price of a condo for sale in Cabarete? <span class="faq-arrow">▾</span></div>
-        <div class="faq-a">As of early 2026, the median asking price for condos in Cabarete is approximately $185,000 USD. Entry-level studio and one-bedroom condos start around $80,000–$120,000. Quality 2-bedroom condos within walking distance of the beach run $140,000–$350,000. Beachfront and oceanview condos range from $250,000 to $925,000. Luxury penthouses on Kite Beach range from $400,000 to over $800,000 for top-floor units with private pools and panoramic Atlantic views.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What rental yields can I expect from a Cabarete condo? <span class="faq-arrow">▾</span></div>
-        <div class="faq-a">Well-managed beachfront and Kite Beach condos generate rental yields of 9–12% annually. High-season nightly rates for quality condos range from $100 to $400+ per night on Airbnb and VRBO. Prime beachfront units routinely achieve 85% occupancy in peak season (December–April). Cabarete's year-round watersport demand means even the slower summer months sustain meaningful occupancy — unlike purely resort-dependent Caribbean markets that go quiet outside high season.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What are the best neighborhoods to buy a condo in Cabarete? <span class="faq-arrow">▾</span></div>
-        <div class="faq-a">The top neighborhoods for condo buyers are: (1) Cabarete Bay — walkable beach town living, highest occupancy, highest prices; (2) Kite Beach — global watersport hub, premium rental rates, strong appreciation; (3) Punta Goleta — calmer upscale eastern bay, newer developments; (4) Playa Encuentro — surf capital, gentrifying rapidly, best value-to-future-upside ratio; (5) ProCab — most affordable, residential, popular with full-time expats and digital nomads. Your choice depends entirely on whether you prioritize lifestyle use, rental yield, or capital appreciation.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What are closing costs for buying a Cabarete condo? <span class="faq-arrow">▾</span></div>
-        <div class="faq-a">Typical closing costs in the Dominican Republic run 3–5% of the purchase price. This includes: transfer tax (3% of assessed value, often assessed below market price), attorney fees (1–2%), title registration fees, and notary charges. Annual property taxes (IPI) are 1% of assessed value above approximately $165,000 USD — significantly lower than most US and European markets. There is no capital gains tax on real estate for individual sellers. No inheritance tax on Dominican property for direct heirs.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Is Cabarete a good market for Airbnb / VRBO investment? <span class="faq-arrow">▾</span></div>
-        <div class="faq-a">One of the best in the Caribbean. Cabarete draws 500,000+ tourists annually with consistent demand from kite surfers (300+ windy days/year), windsurfers, surfers, digital nomads, and expats. Unlike resort towns that depend on package tourism, Cabarete's sport-tourism and nomad economy runs year-round. Prime beachfront condos command $150–$400/night and achieve 85%+ peak-season occupancy. Many owners use local management companies (8–15% of rental revenue) to run operations hands-off from abroad.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How far is Cabarete from the airport? <span class="faq-arrow">▾</span></div>
-        <div class="faq-a">Cabarete is approximately 20 minutes (18 km) from Gregorio Luperón International Airport (POP) in Puerto Plata. POP has direct connections from Miami, New York, Toronto, Montreal, and several European and Latin American cities. Santiago Cibao International Airport (STI) offers additional flight options about 90 minutes away. The proximity to POP is a significant driver of Cabarete's rental demand — guests can land and be at the beach within 20 minutes of touchdown.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Do I need to be a resident to buy property in the DR? <span class="faq-arrow">▾</span></div>
-        <div class="faq-a">No residency or visa is required to purchase property. You can buy as a tourist. If your purchase exceeds $200,000 USD, you may qualify for the Dominican Investor Residency Visa, providing renewable legal residency. Many long-term buyers pursue residency for practical reasons — local banking, a Dominican driver's license, and access to the healthcare system. The residency application process takes roughly 6–12 months and requires a clean criminal background check from your home country.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What should I look for in a Cabarete property management company? <span class="faq-arrow">▾</span></div>
-        <div class="faq-a">Key factors: (1) Local track record — how long have they operated in Cabarete and how many properties do they manage? (2) Fee structure — most charge 8–15% of gross rental revenue. Confirm whether that covers cleaning, guest communication, and maintenance or whether those are billed separately. (3) Airbnb and VRBO optimization — do they actively manage pricing dynamically or use static rates? Dynamic pricing can increase yield by 15–25%. (4) References from other foreign owners. (5) Clear accounting and owner portal access so you can see your bookings and income in real time.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Can I get a mortgage as a foreigner buying in the Dominican Republic? <span class="faq-arrow">▾</span></div>
-        <div class="faq-a">Yes, but it's less common than cash purchases. Dominican banks do offer mortgages to foreigners — typically 60–70% LTV, with rates running 7–12% depending on the bank and loan term. The major Dominican banks (Banco Popular, Banreservas, Scotiabank DR, and Asociación Popular de Ahorros y Préstamos) all have foreign buyer programs. Many international buyers choose to finance through home-country equity lines or personal loans rather than navigate the local mortgage process. Cabarete has a predominantly cash buyer market, which gives cash buyers negotiating leverage.</div>
-      </div>
+    <div class="faq-wrap" id="faq-list">
+      <!-- Dynamically rendered by renderFAQ() -->
     </div>
   </div>
 </section>
-
 <!-- SISTER SITES -->
 <div class="sister-strip">
   <div class="container">
@@ -1495,21 +1389,73 @@ footer ul li a:hover { color: var(--gold-light); }
 </footer>
 
 <script>
+// ─────────────────────────────────────────
+// BILINGUAL LANGUAGE SYSTEM
+// ─────────────────────────────────────────
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = el.getAttribute('data-' + lang);
+    if (text !== null) el.innerHTML = text;
+  });
+  renderFAQ(lang);
+}
+
+// ─────────────────────────────────────────
+// FAQ DATA — bilingual
+// ─────────────────────────────────────────
+const faqData = {
+  en: [
+    { q: "Can foreigners buy condos in Cabarete, Dominican Republic?", a: "Yes. The Dominican Republic grants foreigners the same property ownership rights as Dominican nationals — enshrined in the constitution. You can purchase condos, villas, or land in your own name with full fee-simple title (Certificado de Título). No special permits, local partners, or government approval required. The process typically takes 30 to 60 days from offer to title registration. It's one of the most accessible foreign ownership frameworks in the entire Caribbean." },
+    { q: "What is the average price of a condo for sale in Cabarete?", a: "As of early 2026, the median asking price for condos in Cabarete is approximately $185,000 USD. Entry-level studio and one-bedroom condos start around $80,000–$120,000. Quality 2-bedroom condos within walking distance of the beach run $140,000–$350,000. Beachfront and oceanview condos range from $250,000 to $925,000. Luxury penthouses on Kite Beach range from $400,000 to over $800,000 for top-floor units with private pools and panoramic Atlantic views." },
+    { q: "What rental yields can I expect from a Cabarete condo?", a: "Well-managed beachfront and Kite Beach condos generate rental yields of 9–12% annually. High-season nightly rates for quality condos range from $100 to $400+ per night on Airbnb and VRBO. Prime beachfront units routinely achieve 85% occupancy in peak season (December–April). Cabarete's year-round watersport demand means even the slower summer months sustain meaningful occupancy — unlike purely resort-dependent Caribbean markets that go quiet outside high season." },
+    { q: "What are the best neighborhoods to buy a condo in Cabarete?", a: "The top neighborhoods for condo buyers are: (1) Cabarete Bay — walkable beach town living, highest occupancy, highest prices; (2) Kite Beach — global watersport hub, premium rental rates, strong appreciation; (3) Punta Goleta — calmer upscale eastern bay, newer developments; (4) Playa Encuentro — surf capital, gentrifying rapidly, best value-to-future-upside ratio; (5) ProCab — most affordable, residential, popular with full-time expats and digital nomads." },
+    { q: "What are closing costs for buying a Cabarete condo?", a: "Typical closing costs in the Dominican Republic run 3–5% of the purchase price. This includes: transfer tax (3% of assessed value, often assessed below market price), attorney fees (1–2%), title registration fees, and notary charges. Annual property taxes (IPI) are 1% of assessed value above approximately $165,000 USD. There is no capital gains tax on real estate for individual sellers. No inheritance tax on Dominican property for direct heirs." },
+    { q: "Is Cabarete a good market for Airbnb / VRBO investment?", a: "One of the best in the Caribbean. Cabarete draws 500,000+ tourists annually with consistent demand from kite surfers (300+ windy days/year), windsurfers, surfers, digital nomads, and expats. Unlike resort towns that depend on package tourism, Cabarete's sport-tourism and nomad economy runs year-round. Prime beachfront condos command $150–$400/night and achieve 85%+ peak-season occupancy. Many owners use local management companies (8–15% of rental revenue) to run operations hands-off from abroad." },
+    { q: "How far is Cabarete from the airport?", a: "Cabarete is approximately 20 minutes (18 km) from Gregorio Luperón International Airport (POP) in Puerto Plata. POP has direct connections from Miami, New York, Toronto, Montreal, and several European and Latin American cities. Santiago Cibao International Airport (STI) offers additional flight options about 90 minutes away. The proximity to POP is a significant driver of Cabarete's rental demand — guests can land and be at the beach within 20 minutes of touchdown." },
+    { q: "Do I need to be a resident to buy property in the DR?", a: "No residency or visa is required to purchase property. You can buy as a tourist. If your purchase exceeds $200,000 USD, you may qualify for the Dominican Investor Residency Visa, providing renewable legal residency. Many long-term buyers pursue residency for practical reasons — local banking, a Dominican driver's license, and access to the healthcare system." },
+    { q: "What should I look for in a Cabarete property management company?", a: "Key factors: (1) Local track record — how long have they operated in Cabarete and how many properties do they manage? (2) Fee structure — most charge 8–15% of gross rental revenue. Confirm whether that covers cleaning, guest communication, and maintenance or whether those are billed separately. (3) Airbnb and VRBO optimization — do they actively manage pricing dynamically or use static rates? Dynamic pricing can increase yield by 15–25%. (4) References from other foreign owners. (5) Clear accounting and owner portal access." },
+    { q: "Can I get a mortgage as a foreigner buying in the Dominican Republic?", a: "Yes, but it's less common than cash purchases. Dominican banks do offer mortgages to foreigners — typically 60–70% LTV, with rates running 7–12% depending on the bank and loan term. Banco Popular, Banreservas, and Scotiabank DR all have foreign buyer programs. Many international buyers choose to finance through home-country equity lines or personal loans. Cabarete has a predominantly cash buyer market, which gives cash buyers negotiating leverage." }
+  ],
+  es: [
+    { q: "¿Pueden los extranjeros comprar condominios en Cabarete, República Dominicana?", a: "Sí. La República Dominicana otorga a los extranjeros los mismos derechos de propiedad que a los ciudadanos dominicanos — consagrados en la constitución. Puede comprar condominios, villas o terrenos a su nombre con pleno título de propiedad (Certificado de Título). No se requieren permisos especiales, socios locales ni aprobación gubernamental. El proceso normalmente tarda de 30 a 60 días desde la oferta hasta el registro del título." },
+    { q: "¿Cuál es el precio promedio de un condominio en Cabarete?", a: "A principios de 2026, el precio de venta mediano de los condominios en Cabarete es de aproximadamente $185,000 USD. Los estudios y condominios de una habitación de nivel básico comienzan alrededor de $80,000–$120,000. Los condominios de 2 habitaciones de calidad a distancia a pie de la playa cuestan $140,000–$350,000. Los condominios frente al mar y con vista al océano oscilan entre $250,000 y $925,000. Los penthouses de lujo en Kite Beach van de $400,000 a más de $800,000." },
+    { q: "¿Qué rendimientos de alquiler puedo esperar de un condominio en Cabarete?", a: "Los condominios bien gestionados en Kite Beach y frente al mar generan rendimientos de alquiler del 9–12% anual. Las tarifas nocturnas de temporada alta para condominios de calidad oscilan entre $100 y $400+ por noche en Airbnb y VRBO. Las unidades de primera línea de playa logran habitualmente el 85% de ocupación en temporada alta (diciembre–abril)." },
+    { q: "¿Cuáles son los mejores vecindarios para comprar un condominio en Cabarete?", a: "Los mejores vecindarios para compradores de condominios son: (1) Cabarete Bay — vida en pueblo playero caminable, mayor ocupación y precios más altos; (2) Kite Beach — centro deportivo acuático global, tarifas de alquiler premium; (3) Punta Goleta — bahía este tranquila y exclusiva, nuevos desarrollos; (4) Playa Encuentro — capital del surf, en rápida gentrificación; (5) ProCab — más asequible, residencial, popular entre expatriados y nómadas digitales." },
+    { q: "¿Cuáles son los costos de cierre para comprar un condominio en Cabarete?", a: "Los costos de cierre típicos en la República Dominicana son del 3–5% del precio de compra. Esto incluye: impuesto de transferencia (3% del valor catastral), honorarios de abogado (1–2%), tasas de registro de título y cargos notariales. Los impuestos anuales sobre la propiedad (IPI) son del 1% del valor catastral por encima de aproximadamente $165,000 USD. No existe impuesto a las ganancias de capital sobre bienes raíces para vendedores individuales." },
+    { q: "¿Es Cabarete un buen mercado para inversión en Airbnb / VRBO?", a: "Uno de los mejores del Caribe. Cabarete atrae a más de 500,000 turistas anuales con demanda constante de kitesurfistas (300+ días de viento/año), windsurfistas, surfistas, nómadas digitales y expatriados. Los condominios de primera línea de playa alcanzan $150–$400/noche y logran más del 85% de ocupación en temporada alta. Muchos propietarios utilizan empresas de gestión locales (8–15% de los ingresos por alquiler) para gestionar las operaciones a distancia." },
+    { q: "¿A qué distancia está Cabarete del aeropuerto?", a: "Cabarete está a aproximadamente 20 minutos (18 km) del Aeropuerto Internacional Gregorio Luperón (POP) en Puerto Plata. POP tiene conexiones directas desde Miami, Nueva York, Toronto, Montreal y varias ciudades europeas y latinoamericanas. El Aeropuerto Internacional Cibao de Santiago ofrece opciones de vuelo adicionales a unos 90 minutos." },
+    { q: "¿Necesito ser residente para comprar una propiedad en la RD?", a: "No se requiere residencia ni visa para comprar una propiedad. Puede comprar como turista. Si su compra supera los $200,000 USD, puede calificar para la Visa de Residencia para Inversores Dominicanos, que proporciona residencia legal renovable. Muchos compradores a largo plazo buscan la residencia por razones prácticas — banca local, licencia de conducir dominicana y acceso al sistema de salud." },
+    { q: "¿Qué debo buscar en una empresa de administración de propiedades en Cabarete?", a: "Factores clave: (1) Trayectoria local — ¿cuánto tiempo llevan operando en Cabarete? (2) Estructura de tarifas — la mayoría cobra entre el 8–15% de los ingresos brutos por alquiler. Confirme si eso cubre la limpieza, la comunicación con los huéspedes y el mantenimiento. (3) Optimización de Airbnb y VRBO — ¿gestionan activamente los precios de forma dinámica? Los precios dinámicos pueden aumentar el rendimiento un 15–25%. (4) Referencias de otros propietarios extranjeros." },
+    { q: "¿Puedo obtener una hipoteca como extranjero comprando en la República Dominicana?", a: "Sí, aunque las compras al contado son más comunes. Los bancos dominicanos sí ofrecen hipotecas a extranjeros — típicamente al 60–70% del valor del préstamo, con tasas del 7–12%. Banco Popular, Banreservas y Scotiabank RD tienen programas para compradores extranjeros. Muchos compradores internacionales optan por financiarse mediante líneas de crédito sobre el capital de su vivienda en su país de origen." }
+  ]
+};
+
+function renderFAQ(lang) {
+  const faqs = faqData[lang];
+  const faqList = document.getElementById('faq-list');
+  if (!faqList) return;
+  faqList.innerHTML = '';
+  faqs.forEach((faq, i) => {
+    const item = document.createElement('div');
+    item.className = 'faq-item';
+    item.id = 'faq-' + i;
+    item.innerHTML = `<div class="faq-q" onclick="toggleFaq(this)">${faq.q} <span class="faq-arrow">▾</span></div><div class="faq-a">${faq.a}</div>`;
+    faqList.appendChild(item);
+  });
+}
+
 // FAQ Toggle
 function toggleFaq(el) {
   const item = el.parentElement;
   const wasOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
   if (!wasOpen) item.classList.add('open');
-}
-
-// Video mute toggle
-function toggleMute() {
-  const video = document.querySelector('.hero-video-wrap video');
-  const btn = document.getElementById('mute-btn');
-  if (!video) return;
-  video.muted = !video.muted;
-  btn.textContent = video.muted ? '🔇 Unmute' : '🔊 Mute';
 }
 
 // Form Submission
@@ -1521,37 +1467,20 @@ function submitListing() {
     document.querySelector('input[name="email_hp"]').value ||
     document.querySelector('input[name="company_hp"]').value
   ) { showSuccess(); return; }
-
   const name = document.getElementById('f-name').value.trim();
   const email = document.getElementById('f-email').value.trim();
   const business = document.getElementById('f-business').value.trim();
-
-  if (!name || !email || !business) {
-    alert('Please fill in your name, email, and business name.');
-    return;
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    alert('Please enter a valid email address.');
-    return;
-  }
+  if (!name || !email || !business) { alert('Please fill in your name, email, and business name.'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
   const spam = /casino|viagra|loan|crypto|bitcoin|seo link|backlink|click here|free money|adult/i;
-  if (spam.test(name + business + document.getElementById('f-msg').value)) {
-    showSuccess(); return;
-  }
-
+  if (spam.test(name + business + document.getElementById('f-msg').value)) { showSuccess(); return; }
   const fd = new FormData();
-  fd.append('name', name);
-  fd.append('email', email);
-  fd.append('business', business);
+  fd.append('name', name); fd.append('email', email); fd.append('business', business);
   fd.append('type', document.getElementById('f-type').value);
   fd.append('url', document.getElementById('f-url').value);
   fd.append('message', document.getElementById('f-msg').value);
   fd.append('_subject', 'New Listing/Advertiser Inquiry — CabareteCondosForSale.com');
-
-  fetch('https://formsubmit.co/ajax/your-email@eyetoad.com', {
-    method: 'POST', body: fd
-  }).catch(() => {});
-
+  fetch('https://formsubmit.co/ajax/your-email@eyetoad.com', { method: 'POST', body: fd }).catch(() => {});
   showSuccess();
 }
 function showSuccess() {
@@ -1562,19 +1491,17 @@ function showSuccess() {
 // Scroll fade animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
-    }
+    if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
   });
 }, { threshold: 0.1 });
-
 document.querySelectorAll('.nb-card, .info-card, .type-card, .sister-card, .step, .res-card').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
+  el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
   observer.observe(el);
 });
+
+// Init — render FAQ in English on load
+renderFAQ('en');
 </script>
 
 </body>
