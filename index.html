@@ -345,7 +345,7 @@ h1.hero-headline em { color: var(--teal-light); font-style: italic; }
 .ad-form input:focus, .ad-form select:focus, .ad-form textarea:focus { border-color: var(--teal-light); }
 .ad-form select option { background: var(--navy); color: white; }
 .ad-form textarea { resize: vertical; min-height: 100px; }
-.hp-field { display: none !important; visibility: hidden !important; position: absolute !important; left: -9999px !important; }
+.hp-field { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
 .btn-submit { width: 100%; background: var(--gold); color: var(--navy); border: none; padding: 15px; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 6px; letter-spacing: 0.3px; }
 .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,168,76,0.4); }
 .form-note { font-size: 12px; color: rgba(255,255,255,0.4); text-align: center; margin-top: 12px; }
@@ -533,7 +533,9 @@ footer ul li a:hover { color: var(--gold-light); }
       "url": "https://cabaretecondosforsale.com",
       "name": "Cabarete Condos For Sale",
       "description": "The definitive guide and directory for condos for sale in Cabarete, Dominican Republic",
-      "publisher": { "@id": "https://cabaretecondosforsale.com/#org" },
+      "publisher": {
+        "@id": "https://cabaretecondosforsale.com/#org"
+      },
       "potentialAction": {
         "@type": "SearchAction",
         "target": "https://cabaretecondosforsale.com/?s={search_term_string}",
@@ -547,7 +549,9 @@ footer ul li a:hover { color: var(--gold-light); }
       "name": "CabareteCondosForSale.com",
       "url": "https://cabaretecondosforsale.com",
       "logo": "https://raw.githubusercontent.com/seniorhelper/cabaretecondosforsale.com/main/images/buy-condo-cabarete-dominican-republic-logo.png",
-      "sameAs": ["https://eyetoad.com"]
+      "sameAs": [
+        "https://eyetoad.com"
+      ]
     },
     {
       "@type": "RealEstateAgent",
@@ -558,7 +562,11 @@ footer ul li a:hover { color: var(--gold-light); }
       "areaServed": {
         "@type": "Place",
         "name": "Cabarete, Puerto Plata, Dominican Republic",
-        "geo": { "@type": "GeoCoordinates", "latitude": 19.748, "longitude": -70.419 }
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 19.748,
+          "longitude": -70.419
+        }
       }
     },
     {
@@ -568,56 +576,130 @@ footer ul li a:hover { color: var(--gold-light); }
         {
           "@type": "Question",
           "name": "Can foreigners buy condos in Cabarete, Dominican Republic?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Dominican Republic grants foreigners the same property ownership rights as Dominican citizens. You can purchase condos, villas, or land in your own name with full fee-simple title — no special permits, local partners, or government approval required. The process typically takes 30 to 60 days from offer to title registration." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Dominican Republic grants foreigners the same property ownership rights as Dominican citizens. You can purchase condos, villas, or land in your own name with full fee-simple title — no special permits, local partners, or government approval required. The process typically takes 30 to 60 days from offer to title registration."
+          }
         },
         {
           "@type": "Question",
           "name": "What is the average price of a condo for sale in Cabarete?",
-          "acceptedAnswer": { "@type": "Answer", "text": "As of early 2026, the median asking price for condos in Cabarete is approximately $185,000 USD. Entry-level studio and one-bedroom condos start around $80,000–$120,000. Beachfront and oceanview condos range from $250,000 to $925,000+. Luxury penthouses on Kite Beach exceed $400,000–$800,000." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As of early 2026, the median asking price for condos in Cabarete is approximately $185,000 USD. Entry-level studio and one-bedroom condos start around $80,000–$120,000. Beachfront and oceanview condos range from $250,000 to $925,000+. Luxury penthouses on Kite Beach exceed $400,000–$800,000."
+          }
         },
         {
           "@type": "Question",
           "name": "What rental yields can I expect from a Cabarete condo?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Well-managed beachfront and Kite Beach condos in Cabarete generate rental yields of 9–12% annually. High-season nightly rates for quality condos range from $100 to $400+ per night on platforms like Airbnb and VRBO. Prime beachfront units routinely achieve 85% occupancy in peak season." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Well-managed beachfront and Kite Beach condos in Cabarete generate rental yields of 9–12% annually. High-season nightly rates for quality condos range from $100 to $400+ per night on platforms like Airbnb and VRBO. Prime beachfront units routinely achieve 85% occupancy in peak season."
+          }
         },
         {
           "@type": "Question",
           "name": "What are the best neighborhoods to buy a condo in Cabarete?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The top neighborhoods for condo buyers in Cabarete are: (1) Cabarete Bay — walkable beach town living with the highest demand and prices; (2) Kite Beach — the world-famous kite and windsurf hub, 300+ windy days per year; (3) Punta Goleta — calmer waters, upscale development, eastern bay; (4) Playa Encuentro — the surf capital, rapidly gentrifying; (5) ProCab — more affordable, quiet residential area a short drive from the beach." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The top neighborhoods for condo buyers in Cabarete are: (1) Cabarete Bay — walkable beach town living with the highest demand and prices; (2) Kite Beach — the world-famous kite and windsurf hub, 300+ windy days per year; (3) Punta Goleta — calmer waters, upscale development, eastern bay; (4) Playa Encuentro — the surf capital, rapidly gentrifying; (5) ProCab — more affordable, quiet residential area a short drive from the beach."
+          }
         },
         {
           "@type": "Question",
           "name": "How far is Cabarete from the nearest airport?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Cabarete is approximately 20 minutes (18 km) from Gregorio Luperón International Airport (POP) in Puerto Plata, which receives direct flights from the US, Canada, and Europe. Santiago Cibao International Airport (STI) is approximately 90 minutes away and offers additional flight options." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cabarete is approximately 20 minutes (18 km) from Gregorio Luperón International Airport (POP) in Puerto Plata, which receives direct flights from the US, Canada, and Europe. Santiago Cibao International Airport (STI) is approximately 90 minutes away and offers additional flight options."
+          }
         },
         {
           "@type": "Question",
           "name": "Is Cabarete a good place for Airbnb / vacation rental investment?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Cabarete is one of the Caribbean's strongest short-term rental markets. The town draws 500,000+ tourists annually, with consistent demand from kite surfers, windsurfers, surfers, digital nomads, and expats. Prime beachfront condos on Kite Beach command $150–$400/night and often exceed 85% peak-season occupancy. The Dominican Republic's low property taxes and absence of capital gains tax on real estate make it structurally favorable for investment." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cabarete is one of the Caribbean's strongest short-term rental markets. The town draws 500,000+ tourists annually, with consistent demand from kite surfers, windsurfers, surfers, digital nomads, and expats. Prime beachfront condos on Kite Beach command $150–$400/night and often exceed 85% peak-season occupancy. The Dominican Republic's low property taxes and absence of capital gains tax on real estate make it structurally favorable for investment."
+          }
         },
         {
           "@type": "Question",
           "name": "Do I need to be a resident to buy property in the Dominican Republic?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. There is no residency or visa requirement to purchase property in the Dominican Republic. You can buy real estate on a tourist visa. If your purchase exceeds $200,000 USD, you may qualify for the Dominican Investor Residency Visa, which provides renewable legal residency." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. There is no residency or visa requirement to purchase property in the Dominican Republic. You can buy real estate on a tourist visa. If your purchase exceeds $200,000 USD, you may qualify for the Dominican Investor Residency Visa, which provides renewable legal residency."
+          }
         },
         {
           "@type": "Question",
           "name": "What are the closing costs for buying a condo in Cabarete?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Typical closing costs in the Dominican Republic run 3–5% of the purchase price and include: transfer tax (3% of assessed value), legal fees (1–2%), title registration, and notary fees. Property taxes are modest — the IPI (annual property tax) is 1% of the assessed value above ~$165,000 USD. No capital gains tax applies if the seller is an individual." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typical closing costs in the Dominican Republic run 3–5% of the purchase price and include: transfer tax (3% of assessed value), legal fees (1–2%), title registration, and notary fees. Property taxes are modest — the IPI (annual property tax) is 1% of the assessed value above ~$165,000 USD. No capital gains tax applies if the seller is an individual."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is CONFOTUR and do Cabarete condos qualify?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CONFOTUR is the Dominican Republic's tourism incentive program under Law 158-01. Projects approved under it can pass buyers an exemption from the 3% transfer tax and from the annual IPI property tax for a set period, commonly up to 15 years. Only specific approved projects qualify, so ask the seller for the CONFOTUR resolution and have your attorney confirm the benefits apply to your unit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do condo maintenance fees cover in Cabarete?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Monthly maintenance fees (cuota de mantenimiento) are set by the building's owners association and usually cover security, common-area cleaning and electricity, pool and garden care, and building insurance; some also include water, internet or a backup generator. Before you buy, ask for the current fee, the association's budget and reserve fund, recent meeting minutes, and a letter confirming the unit has no unpaid fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I check before buying a pre-construction condo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Look at the developer's completed projects and visit them, confirm the land title is in the developer's name and free of liens, and ask for the construction permit. Prefer payment schedules tied to construction milestones, and make sure the contract states the delivery date, finishes, and what happens if the project is late. Have an independent attorney review the contract before you pay a deposit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need insurance for a condo in Cabarete?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, plan for it. The Atlantic hurricane season runs from June 1 to November 30, and the North Coast can see tropical storms. Most condo associations insure the building structure, so ask what the master policy covers and buy your own policy for contents, interior finishes and liability, especially if you rent the unit to guests."
+          }
         }
       ]
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cabaretecondosforsale.com" },
-        { "@type": "ListItem", "position": 2, "name": "Cabarete Condos For Sale", "item": "https://cabaretecondosforsale.com/#listings" },
-        { "@type": "ListItem", "position": 3, "name": "Buyer's Guide", "item": "https://cabaretecondosforsale.com/#guide" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cabaretecondosforsale.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cabarete Condos For Sale",
+          "item": "https://cabaretecondosforsale.com/#listings"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Buyer's Guide",
+          "item": "https://cabaretecondosforsale.com/#guide"
+        }
       ]
     },
     {
       "@type": "Speakable",
-      "cssSelector": [".speakable", ".qa-answer"]
+      "cssSelector": [
+        ".speakable",
+        ".qa-answer"
+      ]
     }
   ]
 }
@@ -1231,28 +1313,29 @@ footer ul li a:hover { color: var(--gold-light); }
         <p style="color: rgba(255,255,255,0.45); font-size:13px; margin-top:10px;">Powered by <a href="https://eyetoad.com" target="_blank" rel="noopener" style="color:var(--gold-light);">Eye To Ad Media</a> — SEO, AIO &amp; getting your business found online.</p>
       </div>
       <div>
-        <div class="ad-form" id="ad-form">
+        <form class="ad-form" id="ad-form" method="POST" data-a="aW5mbw==" data-b="ZXlldG9hZC5jb20=">
           <h3>Get Featured — Start Here</h3>
 
-          <!-- Honeypot fields -->
-          <input type="text" name="first_name_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <input type="email" name="email_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <input type="text" name="company_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <!-- Honeypot field -->
+          <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="_subject" value="New lead — cabaretecondosforsale.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
 
           <div class="form-row">
             <div class="form-group">
-              <input type="text" id="f-name" placeholder="Your Name *" maxlength="80" required>
+              <input type="text" id="f-name" name="name" placeholder="Your Name *" maxlength="80" required>
             </div>
             <div class="form-group">
-              <input type="email" id="f-email" placeholder="Email Address *" maxlength="120" required>
+              <input type="email" id="f-email" name="email" placeholder="Email Address *" maxlength="120" required>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <input type="text" id="f-business" placeholder="Business / Property Name *" maxlength="100" required>
+              <input type="text" id="f-business" name="business" placeholder="Business / Property Name *" maxlength="100" required>
             </div>
             <div class="form-group">
-              <select id="f-type">
+              <select id="f-type" name="type">
                 <option value="" disabled selected>I Am A...</option>
                 <option>Real Estate Agent</option>
                 <option>Property Developer</option>
@@ -1264,14 +1347,14 @@ footer ul li a:hover { color: var(--gold-light); }
             </div>
           </div>
           <div class="form-group">
-            <input type="text" id="f-url" placeholder="Website or Listing URL (optional)" maxlength="200">
+            <input type="text" id="f-url" name="url" placeholder="Website or Listing URL (optional)" maxlength="200">
           </div>
           <div class="form-group">
-            <textarea id="f-msg" placeholder="Tell us about your property or what you're looking to promote..." maxlength="600"></textarea>
+            <textarea id="f-msg" name="message" placeholder="Tell us about your property or what you're looking to promote..." maxlength="600"></textarea>
           </div>
-          <button class="btn-submit" onclick="submitListing()">🚀 Submit — Get Featured</button>
+          <button type="submit" class="btn-submit">🚀 Submit — Get Featured</button>
           <p class="form-note">No commitment required. We'll respond within 24 hours.</p>
-        </div>
+        </form>
         <div class="form-success" id="form-success">
           <span>🌴</span>
           <h4>You're In the Queue!</h4>
@@ -1420,7 +1503,11 @@ const faqData = {
     { q: "How far is Cabarete from the airport?", a: "Cabarete is approximately 20 minutes (18 km) from Gregorio Luperón International Airport (POP) in Puerto Plata. POP has direct connections from Miami, New York, Toronto, Montreal, and several European and Latin American cities. Santiago Cibao International Airport (STI) offers additional flight options about 90 minutes away. The proximity to POP is a significant driver of Cabarete's rental demand — guests can land and be at the beach within 20 minutes of touchdown." },
     { q: "Do I need to be a resident to buy property in the DR?", a: "No residency or visa is required to purchase property. You can buy as a tourist. If your purchase exceeds $200,000 USD, you may qualify for the Dominican Investor Residency Visa, providing renewable legal residency. Many long-term buyers pursue residency for practical reasons — local banking, a Dominican driver's license, and access to the healthcare system." },
     { q: "What should I look for in a Cabarete property management company?", a: "Key factors: (1) Local track record — how long have they operated in Cabarete and how many properties do they manage? (2) Fee structure — most charge 8–15% of gross rental revenue. Confirm whether that covers cleaning, guest communication, and maintenance or whether those are billed separately. (3) Airbnb and VRBO optimization — do they actively manage pricing dynamically or use static rates? Dynamic pricing can increase yield by 15–25%. (4) References from other foreign owners. (5) Clear accounting and owner portal access." },
-    { q: "Can I get a mortgage as a foreigner buying in the Dominican Republic?", a: "Yes, but it's less common than cash purchases. Dominican banks do offer mortgages to foreigners — typically 60–70% LTV, with rates running 7–12% depending on the bank and loan term. Banco Popular, Banreservas, and Scotiabank DR all have foreign buyer programs. Many international buyers choose to finance through home-country equity lines or personal loans. Cabarete has a predominantly cash buyer market, which gives cash buyers negotiating leverage." }
+    { q: "Can I get a mortgage as a foreigner buying in the Dominican Republic?", a: "Yes, but it's less common than cash purchases. Dominican banks do offer mortgages to foreigners — typically 60–70% LTV, with rates running 7–12% depending on the bank and loan term. Banco Popular, Banreservas, and Scotiabank DR all have foreign buyer programs. Many international buyers choose to finance through home-country equity lines or personal loans. Cabarete has a predominantly cash buyer market, which gives cash buyers negotiating leverage." },
+    { q: "What is CONFOTUR and do Cabarete condos qualify?", a: "CONFOTUR is the Dominican Republic's tourism incentive program under Law 158-01. Projects approved under it can pass buyers an exemption from the 3% transfer tax and from the annual IPI property tax for a set period, commonly up to 15 years. Only specific approved projects qualify, so ask the seller for the CONFOTUR resolution and have your attorney confirm the benefits apply to your unit." },
+    { q: "What do condo maintenance fees cover in Cabarete?", a: "Monthly maintenance fees (cuota de mantenimiento) are set by the building's owners association and usually cover security, common-area cleaning and electricity, pool and garden care, and building insurance; some also include water, internet or a backup generator. Before you buy, ask for the current fee, the association's budget and reserve fund, recent meeting minutes, and a letter confirming the unit has no unpaid fees." },
+    { q: "What should I check before buying a pre-construction condo?", a: "Look at the developer's completed projects and visit them, confirm the land title is in the developer's name and free of liens, and ask for the construction permit. Prefer payment schedules tied to construction milestones, and make sure the contract states the delivery date, finishes, and what happens if the project is late. Have an independent attorney review the contract before you pay a deposit." },
+    { q: "Do I need insurance for a condo in Cabarete?", a: "Yes, plan for it. The Atlantic hurricane season runs from June 1 to November 30, and the North Coast can see tropical storms. Most condo associations insure the building structure, so ask what the master policy covers and buy your own policy for contents, interior finishes and liability, especially if you rent the unit to guests." }
   ],
   es: [
     { q: "¿Pueden los extranjeros comprar condominios en Cabarete, República Dominicana?", a: "Sí. La República Dominicana otorga a los extranjeros los mismos derechos de propiedad que a los ciudadanos dominicanos — consagrados en la constitución. Puede comprar condominios, villas o terrenos a su nombre con pleno título de propiedad (Certificado de Título). No se requieren permisos especiales, socios locales ni aprobación gubernamental. El proceso normalmente tarda de 30 a 60 días desde la oferta hasta el registro del título." },
@@ -1432,7 +1519,11 @@ const faqData = {
     { q: "¿A qué distancia está Cabarete del aeropuerto?", a: "Cabarete está a aproximadamente 20 minutos (18 km) del Aeropuerto Internacional Gregorio Luperón (POP) en Puerto Plata. POP tiene conexiones directas desde Miami, Nueva York, Toronto, Montreal y varias ciudades europeas y latinoamericanas. El Aeropuerto Internacional Cibao de Santiago ofrece opciones de vuelo adicionales a unos 90 minutos." },
     { q: "¿Necesito ser residente para comprar una propiedad en la RD?", a: "No se requiere residencia ni visa para comprar una propiedad. Puede comprar como turista. Si su compra supera los $200,000 USD, puede calificar para la Visa de Residencia para Inversores Dominicanos, que proporciona residencia legal renovable. Muchos compradores a largo plazo buscan la residencia por razones prácticas — banca local, licencia de conducir dominicana y acceso al sistema de salud." },
     { q: "¿Qué debo buscar en una empresa de administración de propiedades en Cabarete?", a: "Factores clave: (1) Trayectoria local — ¿cuánto tiempo llevan operando en Cabarete? (2) Estructura de tarifas — la mayoría cobra entre el 8–15% de los ingresos brutos por alquiler. Confirme si eso cubre la limpieza, la comunicación con los huéspedes y el mantenimiento. (3) Optimización de Airbnb y VRBO — ¿gestionan activamente los precios de forma dinámica? Los precios dinámicos pueden aumentar el rendimiento un 15–25%. (4) Referencias de otros propietarios extranjeros." },
-    { q: "¿Puedo obtener una hipoteca como extranjero comprando en la República Dominicana?", a: "Sí, aunque las compras al contado son más comunes. Los bancos dominicanos sí ofrecen hipotecas a extranjeros — típicamente al 60–70% del valor del préstamo, con tasas del 7–12%. Banco Popular, Banreservas y Scotiabank RD tienen programas para compradores extranjeros. Muchos compradores internacionales optan por financiarse mediante líneas de crédito sobre el capital de su vivienda en su país de origen." }
+    { q: "¿Puedo obtener una hipoteca como extranjero comprando en la República Dominicana?", a: "Sí, aunque las compras al contado son más comunes. Los bancos dominicanos sí ofrecen hipotecas a extranjeros — típicamente al 60–70% del valor del préstamo, con tasas del 7–12%. Banco Popular, Banreservas y Scotiabank RD tienen programas para compradores extranjeros. Muchos compradores internacionales optan por financiarse mediante líneas de crédito sobre el capital de su vivienda en su país de origen." },
+    { q: "¿Qué es CONFOTUR y califican los condominios de Cabarete?", a: "CONFOTUR es el programa de incentivo turístico de la República Dominicana bajo la Ley 158-01. Los proyectos aprobados pueden transferir al comprador la exención del 3% de impuesto de transferencia y del IPI anual por un período determinado, comúnmente hasta 15 años. Solo califican proyectos aprobados específicos, así que pide al vendedor la resolución de CONFOTUR y que tu abogado confirme que los beneficios aplican a tu unidad." },
+    { q: "¿Qué cubren las cuotas de mantenimiento de un condominio en Cabarete?", a: "La cuota de mantenimiento mensual la fija la asociación de propietarios del edificio y normalmente cubre seguridad, limpieza y electricidad de áreas comunes, piscina y jardines, y el seguro del edificio; algunas incluyen agua, internet o planta eléctrica. Antes de comprar, pide la cuota actual, el presupuesto y fondo de reserva de la asociación, actas recientes y una carta que confirme que la unidad no tiene cuotas pendientes." },
+    { q: "¿Qué debo revisar antes de comprar un condominio en planos?", a: "Revisa los proyectos terminados del desarrollador y visítalos, confirma que el título del terreno está a nombre del desarrollador y libre de gravámenes, y pide la licencia de construcción. Prefiere planes de pago ligados a avances de obra y asegúrate de que el contrato indique fecha de entrega, terminaciones y qué pasa si el proyecto se atrasa. Haz que un abogado independiente revise el contrato antes de pagar un depósito." },
+    { q: "¿Necesito seguro para un condominio en Cabarete?", a: "Sí, conviene planificarlo. La temporada de huracanes del Atlántico va del 1 de junio al 30 de noviembre y la Costa Norte puede recibir tormentas tropicales. La mayoría de las asociaciones aseguran la estructura del edificio, así que pregunta qué cubre la póliza general y contrata tu propia póliza para contenido, terminaciones interiores y responsabilidad civil, especialmente si alquilas la unidad." }
   ]
 };
 
@@ -1458,31 +1549,8 @@ function toggleFaq(el) {
   if (!wasOpen) item.classList.add('open');
 }
 
-// Form Submission
-let formStart = Date.now();
-function submitListing() {
-  if (Date.now() - formStart < 2500) { showSuccess(); return; }
-  if (
-    document.querySelector('input[name="first_name_hp"]').value ||
-    document.querySelector('input[name="email_hp"]').value ||
-    document.querySelector('input[name="company_hp"]').value
-  ) { showSuccess(); return; }
-  const name = document.getElementById('f-name').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const business = document.getElementById('f-business').value.trim();
-  if (!name || !email || !business) { alert('Please fill in your name, email, and business name.'); return; }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
-  const spam = /casino|viagra|loan|crypto|bitcoin|seo link|backlink|click here|free money|adult/i;
-  if (spam.test(name + business + document.getElementById('f-msg').value)) { showSuccess(); return; }
-  const fd = new FormData();
-  fd.append('name', name); fd.append('email', email); fd.append('business', business);
-  fd.append('type', document.getElementById('f-type').value);
-  fd.append('url', document.getElementById('f-url').value);
-  fd.append('message', document.getElementById('f-msg').value);
-  fd.append('_subject', 'New Listing/Advertiser Inquiry — CabareteCondosForSale.com');
-  fetch('https://formsubmit.co/ajax/your-email@eyetoad.com', { method: 'POST', body: fd }).catch(() => {});
-  showSuccess();
-}
+// Form Submission: handled by the FormSubmit AJAX script at the end of the page.
+document.getElementById('ad-form').addEventListener('fs:sent', showSuccess);
 function showSuccess() {
   document.getElementById('ad-form').style.display = 'none';
   document.getElementById('form-success').style.display = 'block';
@@ -1504,5 +1572,44 @@ document.querySelectorAll('.nb-card, .info-card, .type-card, .sister-card, .step
 renderFAQ('en');
 </script>
 
+<script>
+/* Lead form + email plumbing: address assembled at runtime, posts to FormSubmit via AJAX */
+(function(){
+  var T0 = Date.now();
+  function addr(el){ return atob(el.getAttribute('data-a')) + String.fromCharCode(64) + atob(el.getAttribute('data-b')); }
+  document.querySelectorAll('a.eml[data-a]').forEach(function(a){
+    var e = addr(a), sj = a.getAttribute('data-s');
+    a.href = 'mailto:' + e + (sj ? '?subject=' + encodeURIComponent(sj) : '');
+    if (!a.textContent.trim()) a.textContent = e;
+  });
+  document.querySelectorAll('form[data-a][data-b]').forEach(function(form){
+    var st = form.querySelector('.fs-status');
+    if (!st) { st = document.createElement('p'); st.className = 'fs-status'; st.setAttribute('role','status'); st.setAttribute('aria-live','polite'); st.style.margin = '10px 0 0'; form.appendChild(st); }
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var hp = form.querySelector('[name="_honey"]');
+      if (hp && hp.value) return;
+      if (Date.now() - T0 < 3500) { st.textContent = 'Give the form a moment, then send again.'; return; }
+      var req = form.querySelectorAll('[required]');
+      for (var i = 0; i < req.length; i++) {
+        if (!String(req[i].value || '').trim()) { st.textContent = 'Please fill in the required fields.'; try { req[i].focus(); } catch(x){} return; }
+      }
+      var btn = form.querySelector('[type="submit"]');
+      if (btn) btn.disabled = true;
+      st.textContent = 'Sending...';
+      fetch('https://formsubmit.co/ajax/' + addr(form), { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
+        .then(function(r){ if (!r.ok) throw new Error('http'); return r.json(); })
+        .then(function(d){
+          if (d && String(d.success) === 'false') throw new Error('fs');
+          st.textContent = "Sent. We'll get back to you shortly.";
+          form.dispatchEvent(new CustomEvent('fs:sent'));
+          form.reset();
+        })
+        .catch(function(){ st.textContent = 'That did not go through. Please call 1-800-481-8638.'; })
+        .then(function(){ if (btn) btn.disabled = false; });
+    });
+  });
+})();
+</script>
 </body>
 </html>
